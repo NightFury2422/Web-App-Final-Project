@@ -1,0 +1,35 @@
+<%- include('../partials/newHeader.ejs')%>
+    <main>
+        <div class="main-content">
+        <h1 class="heading">Please edit the desired fields</h1>
+        <form method = "POST" action = "/sales/<%= game.id%>?_method=PUT">
+            <label for="condition">Condition: </label>
+            <select name="condition" id="condition" value = "<%= game.condition%>" required>
+                <option value="">Select</option>
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Pre-owned">Pre-Owned</option>
+                <option value="Poor">Poor</option>
+                <option value="Damaged">Damaged</option>
+            </select><br>
+            <br>
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title" value = "<%= game.title%>" required><br>
+            <br>
+            <label for="price">Price: $</label>
+            <input type="number" id="price" name="price" value = "<%= game.price%>" required><br>
+            <br>
+            <label for="details">Details: </label><br>
+            <textarea name="details" id="details" cols="60" rows="10" required><%= game.details%></textarea><br>
+            <br>
+            <!-- <label for="totalOffers">Offers: </label>
+            <input type="number" id="totalOffers" name="totalOffers" value = "<%= game.totalOffers%>" required><br>
+            <br> -->
+            <label for="image">Image: </label>
+            <input type="file" name="image" id="image" value = "<%= game.image%>" required><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

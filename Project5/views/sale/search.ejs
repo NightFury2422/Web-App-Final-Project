@@ -1,0 +1,17 @@
+<%- include('../partials/itemsHeader.ejs')%>
+    <main>
+        <% if(games.length > 0) {%>
+            <% games.forEach(game => { %>
+            <div class="game">
+                <a href="/sales/<%= game.id%>"><img src="/images/<%= game.image%>" alt="game cover image"></a>
+                <h2><%= game.title%></h2>
+                <p><%= game.condition%></p>
+                <a href="/sales/<%= game.id%>"><p>$<%= game.price%></p></a>
+                <p>Offers: <%= game.totalOffers%></p>
+            </div>
+            <% }) %>
+        <% } else {%>
+            <p>No games found.</p>
+        <%}%>
+    </main>
+    <%- include('../partials/footer.ejs')%>

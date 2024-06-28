@@ -1,0 +1,26 @@
+<%- include('../partials/discriptionHeader.ejs')%>
+    <main>
+        <div class="picture">
+            <img src="/images/<%= game.image%>" alt="game cover image">
+        </div>
+        <div class="info">
+            <h1><%= game.title%></h1>
+            <p>Condition: <%= game.condition%></p>
+            <p>Price: $<%= game.price%> | Offers: <%= game.totalOffers%></p>
+            <p>Seller: <%= game.seller.firstName + ' ' + game.seller.lastName%></p>
+            <p>Details: <%= game.details%></p>
+            <%if(game.active == true){%>
+                <form action='/sales/<%= game.id %>/offers' method='POST'>
+                    <label for="amount">Offer Amount: $</label>
+                    <input type="number" id="amount" name="amount">
+                    <input type="submit" value="Make Offer">
+                </form>
+                <%if(game.totalOffers > 0){%>
+                    <p>Highest Offer: $<%= game.highestOffer%></p>
+                <%}%>
+            <%}else{%>
+                <p>Unfortunatly this item is no longer available.</p>
+            <%}%>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>
